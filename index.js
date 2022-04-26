@@ -1,6 +1,7 @@
 // : Include packages needed for this application
 const fs = require("fs");
 const inquirer = require("inquirer");
+const generateMarkdown = require("./utils/generateMarkdown")
 inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
 
 // : Create an array of questions for user input
@@ -20,16 +21,12 @@ const questions = [
     "Add a test instruction?"
 ];
 
-function pageData(data) {
-    return `
-    # 
-    
-    `
-}
 
 // : Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, pageData(data))
+    fs.writeFile(fileName, generateMarkdown(data), (err) =>
+    err ? console.log(err) : console.log('Successfully created README.md')
+    )
 }
 
 // : Create a function to initialize app
@@ -65,7 +62,7 @@ function init() {
             name: "licence",
             message: questions[9],
             choices: [
-                "Apache 2.0",
+                "Apache 2.0 License",
                 "Boost Software Licence 1.0",
                 "BSD 3-Clause Licence",
                 "BSD 2-Clause Licence",
@@ -173,7 +170,9 @@ function init() {
                 }
             ]
         },
-    ])
+    ]).then((answers) => {
+        writeToFile("README.md", answers)
+    })
 }
 
 // Function call to initialize app
