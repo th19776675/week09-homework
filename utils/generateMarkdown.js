@@ -235,6 +235,7 @@ function renderLicense(license, output) {
 // Generate lists for the looped question prompts.
 function generateLists(question, answers) {
   let markdownArr = []
+  // if (question = "")
   for (let i = 0; i < answers.length; i++) {
     markdownArr.push(`- ${answers[i].listItem} \n`)
   }
@@ -245,7 +246,7 @@ function generateLists(question, answers) {
 function generateCollabs(answers){
   let markdownArr = []
   for (let i = 0; i < answers.length; i++) {
-    markdownArr.push(`- ${answers[i].name} @ [${answers[i].github}](https://github.com/${answers[i].github}) \n`)
+    markdownArr.push(`> ${answers[i].name} @ [${answers[i].github}](https://github.com/${answers[i].github}) <br> \n `)
   }
   const markdownStr = markdownArr.join("");
   return markdownStr;
@@ -259,10 +260,7 @@ ${renderLicense(data.license, "badge")}
 
 ## Description
   
-- ${data.descMotivation}
-- ${data.descWhy}
-- ${data.descSolve}
-- ${data.descLearn}
+${data.desc}
   
 ## Table of Contents
     

@@ -7,10 +7,7 @@ inquirer.registerPrompt("loop", require("inquirer-loop")(inquirer));
 // : Create an array of questions for user input
 const questions = [
     "Enter a Project Title.",
-    "What was your motivation?",
-    "Why did you build this project?",
-    "What problem does it solve?",
-    "What did you learn?",
+    "Provide a description for this project.",
     "Add an installation step?",
     "Add a usage instruction?",
     "Add a contribution guideline?",
@@ -39,28 +36,13 @@ function init() {
         },
         {
             type: "input",
-            name: "descMotivation",
+            name: "desc",
             message: questions[1]
-        },
-        {
-            type: "input",
-            name: "descWhy",
-            message: questions[2]
-        },
-        {
-            type: "input",
-            name: "descSolve",
-            message: questions[3]
-        },
-        {
-            type: "input",
-            name: "descLearn",
-            message: questions[4]
         },
         {
             type: "list",
             name: "license",
-            message: questions[9],
+            message: questions[6],
             choices: [
                 "Apache 2.0 License",
                 "Boost Software license 1.0",
@@ -98,17 +80,17 @@ function init() {
         {
             type: "input",
             name: "userGit",
-            message: questions[10]
+            message: questions[7]
         },
         {
             type: "input",
             name: "userEmail",
-            message: questions[11]
+            message: questions[8]
         },
         {
             type: "loop",
             name: "iStep",
-            message: questions[5],
+            message: questions[2],
             questions: [
                 {
                     type: "input",
@@ -120,7 +102,7 @@ function init() {
         {
             type: "loop",
             name: "uStep",
-            message: questions[6],
+            message: questions[3],
             questions: [
                 {
                     type: "input",
@@ -132,7 +114,7 @@ function init() {
         {
             type: "loop",
             name: "conGuide",
-            message: questions[7],
+            message: questions[4],
             questions: [
                 {
                     type: "input",
@@ -144,7 +126,7 @@ function init() {
         {
             type: "loop",
             name: "collaborators",
-            message: questions[8],
+            message: questions[5],
             questions: [
                 {
                     type: "input",
@@ -161,7 +143,7 @@ function init() {
         {
             type: "loop",
             name: "test",
-            message: questions[12],
+            message: questions[9],
             questions: [
                 {
                     type: "input",
