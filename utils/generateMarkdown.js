@@ -232,60 +232,78 @@ function renderLicense(license, output) {
 }
 
 
+// Generate lists for the looped question prompts.
+function generateLists(question, answers) {
+  let markdownArr = []
+  for (let i = 0; i < answers.length; i++) {
+    markdownArr.push(`- ${answers[i].listItem} \n`)
+  }
+  const markdownStr = markdownArr.join("");
+  return markdownStr;
+}
+
+function generateCollabs(answers){
+  let markdownArr = []
+  for (let i = 0; i < answers.length; i++) {
+    markdownArr.push(`- ${answers[i].name} @ [${answers[i].github}](https://github.com/${answers[i].github}) \n`)
+  }
+  const markdownStr = markdownArr.join("");
+  return markdownStr;
+}
 
 // : Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title} 
-  <br>
-  ${renderLicense(data.licence, "badge")}
+return `# ${data.title} 
 
-  ## Description
+${renderLicense(data.license, "badge")}
+
+## Description
   
-  - ${data.descMotivation}
-  - ${data.descWhy}
-  - ${data.descSolve}
-  - ${data.descLearn}
+- ${data.descMotivation}
+- ${data.descWhy}
+- ${data.descSolve}
+- ${data.descLearn}
   
-  ## Table of Contents
+## Table of Contents
     
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Contribute](#contribute)
-  - [Tests](#tests)
-  - [Credits](#credits)
-  - [License](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contribute](#contribute)
+- [Tests](#tests)
+- [Credits](#credits)
+- [License](#license)
   
-  ## Installation
+## Installation
   
-  ${generateLists("installation", data.iStep)}
+${generateLists("iSteps", data.iStep)}
 
-  ## Usage
+## Usage
   
-  ${generateLists("usage", data.uStep)}
+${generateLists("uSteps", data.uStep)}
   
-  ## Contribute
+## Contribute
   
-  ${generateLists("contributions", data.conGuide)}
+${generateLists("conGuides", data.conGuide)}
   
-  ## Tests
+## Tests
 
-  ${generateLists("tests", data.test)}
+${generateLists("tests", data.test)}
   
-  ---
+---
 
-  ## Questions
+## Questions
 
-  To contact me: [Github](https://github.com/${data.userGit}) or [email]({mailto:${data.userEmail}})
+To contact me: [Github](https://github.com/${data.userGit}) or [email]({mailto:${data.userEmail}})
 
-  ## Credits
+## Credits
   
-  ${generateLists("collaborators", data.collaborators)}
+${generateCollabs(data.collaborators)}
 
-  ## License
+## License
   
-  This application is covered under the ${data.licence}.
-  <br>
-  To find out more click [here](${renderLicense(data.licence, "link")})
+This application is covered under the ${data.license}.
+<br>
+To find out more click [here](${renderLicense(data.license, "link")})
 `;
 }
 

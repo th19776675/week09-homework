@@ -15,7 +15,7 @@ const questions = [
     "Add a usage instruction?",
     "Add a contribution guideline?",
     "Add a collaborator?",
-    "Which licence pertains to this project?",
+    "Which license pertains to this project?",
     "What is your github username?",
     "What is your email address?",
     "Add a test instruction?"
@@ -59,13 +59,13 @@ function init() {
         },
         {
             type: "list",
-            name: "licence",
+            name: "license",
             message: questions[9],
             choices: [
                 "Apache 2.0 License",
-                "Boost Software Licence 1.0",
-                "BSD 3-Clause Licence",
-                "BSD 2-Clause Licence",
+                "Boost Software license 1.0",
+                "BSD 3-Clause license",
+                "BSD 2-Clause license",
                 "CC0",
                 "Attribution 4.0 International",
                 "Attribution-ShareAlike 4.0 International",
@@ -112,7 +112,7 @@ function init() {
             questions: [
                 {
                     type: "input",
-                    name: "iSteps",
+                    name: "listItem",
                     message: "Input an installation instruction."
                 }
             ]
@@ -124,7 +124,7 @@ function init() {
             questions: [
                 {
                     type: "input",
-                    name: "uSteps",
+                    name: "listItem",
                     message: "Input a usage instruction."
                 }
             ]
@@ -136,7 +136,7 @@ function init() {
             questions: [
                 {
                     type: "input",
-                    name: "conGuides",
+                    name: "listItem",
                     message: "Input a contribution guideline."
                 }
             ]
@@ -165,7 +165,7 @@ function init() {
             questions: [
                 {
                     type: "input",
-                    name: "tests",
+                    name: "listItem",
                     message: "Input a test instruction."
                 }
             ]
